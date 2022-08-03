@@ -14,4 +14,6 @@ def index(request):
  
     return HttpResponse(template.render(context, request))
 
-
+def add(request):
+    template = loader.get_template('add.html')
+    return HttpResponse(template.render({}, request))
