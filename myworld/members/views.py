@@ -7,9 +7,11 @@ from .models import Members
 
 def index(request):
     mymembers = Members.objects.all().values()
-    output = ""
-    for x in mymembers:
-        output += x["firstname"]
-    return HttpResponse(output)
+    template = loader.get_template('index.html')
+    context = {
+        'mymembers' : mymembers
+    }
+ 
+    return HttpResponse(template.render(context, request))
 
 
